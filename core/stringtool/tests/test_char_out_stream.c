@@ -9,6 +9,7 @@ static int test_char_o_stream_expand(void)
 	stream = char_o_stream_new(20);
 	char_o_stream_expand(stream);
 	correct_size = CHAR_O_STREAM_CAP(stream);
+	char_o_stream_del(stream);
 	return correct_size == 400;
 }
 
