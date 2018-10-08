@@ -59,3 +59,27 @@ const char* strfind_substr(const char* string, const char* substring) {
   if(!*traverse) return index;
   else return NULL;
 }
+
+const char* strfind_seq(const char* string, long* length, int(*check)(int)) {
+  int on = 0;
+  const char* start = NULL;
+  while(*string)
+  {
+    if(on)
+    {
+      if(!(*check)(*string)) return start;
+      else *length += 1;
+    }
+    else
+    {
+      if((*check)(*string))
+      {
+        on = 1;
+        *length = 1;
+        start = string;
+      }
+    }
+    string++;
+  }
+  return start;
+}

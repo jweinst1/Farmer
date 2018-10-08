@@ -14,3 +14,4 @@ endmacro()
 
 ### Tests begin here ###
 create_stringtool_test(test_strfind)
+create_stringtool_test(test_char_out_stream)
