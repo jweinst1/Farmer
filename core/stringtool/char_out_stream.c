@@ -30,6 +30,18 @@ void char_o_stream_push(struct char_o_stream_t* ostr, char ch)
 	ostr->space--;
 }
 
+void char_o_stream_reset(struct char_o_stream_t* ostr)
+{
+	size_t cap = CHAR_O_STREAM_CAP(ostr);
+	ostr->end = ostr->buf;
+	ostr->space = cap;
+}
+
+void char_o_stream_write(struct char_o_stream_t* ostr, FILE* fp)
+{
+	fwrite(ostr->buf, sizeof(char), ostr->end - ostr->buf,fp);
+}
+
 void char_o_stream_del(struct char_o_stream_t* ostr)
 {
 	free(ostr->buf);
